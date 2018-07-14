@@ -1,0 +1,1 @@
+jupyter nbconvert week01-1.ipynb --to slides --post serve

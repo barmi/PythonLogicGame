@@ -102,3 +102,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+/src/week01/week01-1.slides.html
