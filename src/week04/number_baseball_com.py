@@ -33,5 +33,13 @@ def init_check_table():
         table[num] = is_valid_num(num)
     return table
 
+def find_valid_num_in_table(table):
+    while True:
+        num = random.randint(1, 999)
+        if table[num]:
+            return num
+# ==============================================================================
+
 check_table = init_check_table()
 print(check_table.count(True))
+print(find_valid_num_in_table(check_table))
