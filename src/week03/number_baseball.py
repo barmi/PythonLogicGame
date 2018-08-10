@@ -49,10 +49,13 @@ print(generate_three_number())
 '''
 com_num = generate_three_number()
 is_correct = False
+count = 0
 
 while not is_correct:
+    count += 1
     man_num = input("세자리 숫자를 입력해 주세요: ")
     strike, ball = get_ball_count(com_num, man_num)
     print(man_num, " : ", strike, "S", ball, "B")
     if strike == 3:
+        print("축하합니다. ", count, "번째에 맞췄네요.")
         is_correct = True
