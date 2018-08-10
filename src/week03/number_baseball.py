@@ -54,3 +54,5 @@ while not is_correct:
     man_num = input("세자리 숫자를 입력해 주세요: ")
     strike, ball = get_ball_count(com_num, man_num)
     print(man_num, " : ", strike, "S", ball, "B")
+    if strike == 3:
+        is_correct = True
