@@ -16,3 +16,22 @@ def get_ball_count(numstr1, numstr2):
                     ball += 1
     
     return strike, ball
+
+def is_valid_num(num):
+    numstr = str(num).zfill(3)
+    return is_valid_numstr(numstr)
+
+def is_valid_numstr(numstr):
+    return ((numstr[0] != numstr[1]) and (numstr[0] != numstr[2]) and (numstr[1] != numstr[2]))
+
+# ==============================================================================
+# check table 관련함수
+def init_check_table():
+    table = [False] * 1000
+    # table에서 중복되는 숫자가 있는 값을 제외한다.
+    for num in range(0, 1000):
+        table[num] = is_valid_num(num)
+    return table
+
+check_table = init_check_table()
+print(check_table.count(True))
