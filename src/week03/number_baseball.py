@@ -12,6 +12,7 @@
 
     출처 : https://namu.wiki/w/숫자야구
 '''
+import random
 
 def get_ball_count(numstr1, numstr2):
     strike = ball = 0
@@ -25,6 +26,21 @@ def get_ball_count(numstr1, numstr2):
     
     return strike, ball
 
+'''
+get_ball_count() 함수 테스트
 print(get_ball_count("123", "123"))
 print(get_ball_count("456", "467"))
 print(get_ball_count("789", "978"))
+'''
+
+def generate_three_number():
+    is_done = False
+    while not is_done:
+        num = str(random.randint(1, 999)).zfill(3)
+        if num[0] != num[1] and num[0] != num[2] and num[1] != num[2]:
+            is_done = True
+    return num
+
+print(generate_three_number())
+print(generate_three_number())
+print(generate_three_number())
