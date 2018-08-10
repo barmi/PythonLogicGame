@@ -27,7 +27,7 @@ def get_ball_count(numstr1, numstr2):
     return strike, ball
 
 '''
-get_ball_count() 함수 테스트
+# get_ball_count() 함수 테스트
 print(get_ball_count("123", "123"))
 print(get_ball_count("456", "467"))
 print(get_ball_count("789", "978"))
@@ -41,6 +41,16 @@ def generate_three_number():
             is_done = True
     return num
 
+'''
+# generate_three_number() 함수 테스트
 print(generate_three_number())
 print(generate_three_number())
 print(generate_three_number())
+'''
+com_num = generate_three_number()
+is_correct = False
+
+while not is_correct:
+    man_num = input("세자리 숫자를 입력해 주세요: ")
+    strike, ball = get_ball_count(com_num, man_num)
+    print(man_num, " : ", strike, "S", ball, "B")
