@@ -15,19 +15,13 @@
 
 def get_ball_count(numstr1, numstr2):
     strike = ball = 0
-    if (numstr1[0] == numstr2[0]):
-        strike += 1
-    if (numstr1[1] == numstr2[1]):
-        strike += 1
-    if (numstr1[2] == numstr2[2]):
-        strike += 1
-    
-    if (numstr1[0] == numstr2[1] or numstr1[0] == numstr2[2]):
-        ball += 1
-    if (numstr1[1] == numstr2[0] or numstr1[1] == numstr2[2]):
-        ball += 1
-    if (numstr1[2] == numstr2[0] or numstr1[2] == numstr2[1]):
-        ball += 1
+    for i in range(0, 3):
+        for j in range(0, 3):
+            if numstr1[i] == numstr2[j]:
+                if i == j:
+                    strike += 1
+                else:
+                    ball += 1
     
     return strike, ball
 
