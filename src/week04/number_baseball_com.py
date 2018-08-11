@@ -62,3 +62,4 @@ print(check_table.count(True))
 for num in range(0, 1000):
     if check_table[num]:
         print(str(num).zfill(3))
+        
