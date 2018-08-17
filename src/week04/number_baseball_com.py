@@ -51,15 +51,28 @@ def update_check_table(table, check_numstr, strike, ball):
                 table[num] = False
 # ==============================================================================
 
-check_table = init_check_table()
-print(check_table.count(True))
-guess_num = find_valid_num_in_table(check_table)
-guess_numstr = str(guess_num).zfill(3)
-print(guess_num)
-s, b = input_ball_count()
-update_check_table(check_table, guess_numstr, s, b)
-print(check_table.count(True))
-for num in range(0, 1000):
-    if check_table[num]:
-        print(str(num).zfill(3))
-        
+def game_start():
+    check_table = init_check_table()
+    try_count = 1
+
+    while True:
+        guess_num = find_valid_num_in_table(check_table)
+        guess_numstr = str(guess_num).zfill(3)
+        print(try_count, ": (", check_table.count(True), ")", guess_numstr, end = " ")
+        s, b = input_ball_count()
+
+        if s == 3:
+            print(try_count, "번만에 맞췄네요.")
+            break
+        if s == -1 and b == -1:
+            for num in range(0, 1000):
+                if check_table[num]:
+                    print(str(num).zfill(3))
+        else:
+            update_check_table(check_table, guess_numstr, s, b)
+            try_count += 1
+            if check_table.count(True) == 0:
+                print("잘못 입력하셨네요.")
+                break
+
+game_start()
