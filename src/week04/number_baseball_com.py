@@ -50,6 +50,43 @@ def update_check_table(table, check_numstr, strike, ball):
             if s != strike or b != ball:
                 table[num] = False
 # ==============================================================================
+# game simulation 관련함수
+def guess_init_num():
+    while True:
+        num = random.randint(1, 999)
+        if is_valid_num(num):
+            return num
+
+def game_simulate(simul_num):
+    simul_count = 1
+    sum_count, min_count, max_count = (0, 9999, 0)
+    while simul_count <= simul_num:
+        # simulation을 위해 사람을 대신해서 임의의 수를 정한다.
+        man_numstr = str(guess_init_num()).zfill(3)
+        check_table = init_check_table()
+        try_count = 1
+        while True:
+            guess_num = find_valid_num_in_table(check_table)
+            guess_numstr = str(guess_num).zfill(3)
+            s, b = get_ball_count(man_numstr, guess_numstr)
+            if s == 3:
+                print(simul_count, ",", man_numstr, ",", guess_numstr, ",", check_table.count(True), ",", try_count)
+                break
+            update_check_table(check_table, guess_numstr, s, b)
+            if check_table.count(True) == 0:
+                print("=== error at : ", man_numstr, "===")
+                break
+            try_count += 1
+        simul_count += 1
+        sum_count += try_count
+        if min_count > try_count: min_count = try_count
+        if max_count < try_count: max_count = try_count
+    print("simul_count : ", simul_num)
+    print("min_count   : ", min_count)
+    print("max_count   : ", max_count)
+    print("avg_count   : ", sum_count / simul_num)
+
+# ==============================================================================
 
 def game_start():
     check_table = init_check_table()
